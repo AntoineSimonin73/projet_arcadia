@@ -1,0 +1,23 @@
+vich_uploader:
+    db_driver: orm
+    
+    metadata:
+        type: attribute
+
+    mappings:
+        images_habitats:
+            uri_prefix: /images/habitats
+            upload_destination: '%kernel.project_dir%/public/images/habitats'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        images_services:
+            uri_prefix: /images/services
+            upload_destination: '%kernel.project_dir%/public/images/services'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        images_animaux:
+            uri_prefix: /images/animaux
+            upload_destination: '%kernel.project_dir%/public/images/animaux'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            delete_on_update: false

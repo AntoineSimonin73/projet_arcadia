@@ -1,0 +1,118 @@
+/*modules*/
+@import 'modules/header.css';
+@import 'modules/footer.css';
+@import 'accueil.css';
+@import 'services.css';
+@import 'habitats.css';
+@import 'contactEtConnexion.css';
+
+* {
+    margin: 0;
+}
+
+:root {
+    /* Colors */
+    --color-header-footer: #095226;
+    --color-fond-avis: #3B120F55;
+
+    /* Fonts */
+    --font-header-footer: 'Hanuman', sans-serif, white;
+    --font-body: 'Happy Monkey', sans-serif;
+}
+
+header {
+    background-color: var(--color-header-footer);
+    font-family: var(--font-header-footer);
+    font-weight: 300;
+    color: white;
+}
+body {
+    font-family: var(--font-body);
+}
+
+header p {
+    font-size: 1.1rem;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 2.25rem;
+  
+}
+
+.para_intro {
+    color: white;
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 2.1rem;
+}
+
+.text_habitats_accueil {
+    font-size: 1.25rem;
+}
+
+h2 {
+    font-size: 3.25rem;
+    text-decoration: underline;
+}
+
+h2 p {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.avis {
+    background-color: var(--color-fond-avis);
+    font-size: 1.3rem;
+    border-radius: 1.8rem;
+}
+
+.avis h2, h3 {
+    color: rgb(0, 0, 0);
+}
+
+table th {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    letter-spacing: 1.5px;
+    border-radius: 1.8rem; /* Ajoutez cette ligne pour arrondir les bordures du tableau */
+    overflow: hidden; /* Assurez-vous que les coins arrondis sont visibles */
+    width: 80%;
+}
+
+thead {
+background-color: rgb(228 240 245);
+}
+
+th,
+td {
+border: 1px solid rgb(160 160 160);
+padding: 15px 30px;
+}
+
+tbody > tr:nth-of-type(even) {
+background-color: rgb(237 238 242);
+}
+
+footer {
+    background-color: var(--color-header-footer);
+    font-family: var(--font-header-footer);
+    color: white;
+    font-size: 1rem;
+}

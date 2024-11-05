@@ -1,0 +1,132 @@
+.accueil_intro {
+    background: url('../images/elephants_fond_recadre1.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+/* Pour avoir l'image des éléphants en fond */
+.accueil_intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    padding-top: 7.375rem;
+    padding-left: 2.1rem;
+}
+
+.para_intro {
+    display: flex;
+    width: 33.94rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    line-height: 2.5rem;
+    text-align: center;
+    padding-top: 2rem;
+    padding-left: 2.1rem;
+    padding-bottom: 7.375rem;
+}
+
+.habitats_accueil {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 1rem 2rem 1rem;
+    text-align: center;
+    justify-items: center;
+    gap: 0.6rem;
+}
+
+.liens_habitats {
+    text-decoration: none;
+    color: black;
+    justify-items: center;
+    display: inline-block;
+    margin:  0 auto;
+}
+.liens_habitats:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+
+.liens_habitats img {
+    display: block;
+    margin:  0 auto;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 450px;
+    height: 450px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.services_du_parc {
+    background: url('../images/crocodile_fond.jpg') no-repeat center center/cover;
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.grid_services_parc {
+    display: flex;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-size: 2rem;
+}
+
+.grid_img {
+    display: block;
+    margin:  0 auto;
+    max-width: 100%;
+    border-radius: 1.25rem;
+}
+
+.liens_services:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+/* Pour avoir l'image du crocodile en fond */
+.services_du_parc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+.avis {
+    margin: 2.3rem auto 2.3rem auto;
+    padding: 1.5rem;
+    background-color: var(--color-fond-avis);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form_avis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form_avis textarea {
+    width: 50rem;
+}

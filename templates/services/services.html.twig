@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo d'Arcadia</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/logo_zoo.svg') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&family=Happy+Monkey:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+</head>
+
+{% block body %}
+
+    {% include 'blocCode/header.html.twig' with {'horaires': horaires} %}
+
+    <main>
+        <section class="nos_services">
+            <h2>Nos services</h2>
+            <div class="grid_services">
+                {% for service in services %}
+                    {% if loop.index == 2 %}
+                        <img src="{{ vich_uploader_asset(service, 'imageFile') }}" class="grid_img second-image" alt="{{ service.nom }}">
+                        <p class="second-description">{{ service.description | nl2br }}</p>
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(service, 'imageFile') }}" class="grid_img" alt="{{ service.nom }}">
+                        <p>{{ service.description | nl2br }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    {% include 'blocCode/footer.html.twig' %}
+
+{% endblock %}
+</html>

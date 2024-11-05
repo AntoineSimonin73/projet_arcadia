@@ -1,0 +1,140 @@
+.contact {
+    background: url('../images/python_fond.jpg') no-repeat center center/cover;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;  /* Aligner les labels et inputs verticalement */
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.form-label {
+    width: 150px;  /* Largeur des labels */
+    text-align: right;  /* Aligner le texte des labels à droite */
+    margin-right: 10px;  /* Espacement entre le label et l'input */
+}
+
+.form-control {
+    padding: 15px;
+    font-size: large;
+    width: 50%;
+}
+
+.formulaire {
+    padding: 5rem 16em 5rem 16rem;
+    border-radius: 1.25rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 30rem);
+}
+
+.formulaire_connexion {
+    margin-top: 3rem;
+    border-radius: 1.25rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulaire_connexion input {
+    width: 50%;
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0.75rem;
+    border: solid 2px rgb(0, 0, 0);
+    text-align: justify;
+    margin-bottom: 3rem;
+    align-items: center;
+}
+
+input {
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0.75rem;
+    border: solid 2px rgb(0, 0, 0);
+    text-align: justify;
+}
+
+input:hover {
+    filter: drop-shadow(0 0 6px white);
+}
+
+textarea {
+    height: 10rem;
+    padding: 0.5rem 1rem 0 0;
+    margin: 0 0 1.5rem 0;
+    border-radius: 0.75rem;
+    border: solid 2px rgb(0, 0, 0);
+    text-align: justify;
+}
+
+textarea:hover {
+    filter: drop-shadow(0 0 6px white);
+}
+
+label {
+    margin: 0 0 0.15rem 0;
+    font-size: 1.2rem;
+}
+
+button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: solid 2px rgb(0, 0, 0);
+    cursor: pointer;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+button:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.connexion {
+    background: url('../images/panthere_fond.jpg') no-repeat center center/cover;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.connecte {
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem;
+    text-align: center;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    background: url('../images/panthere_fond.jpg') no-repeat center center/cover;
+    
+}
+
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 50%;
+    justify-self: center;
+    text-align: center;
+}
+
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 50%;
+    justify-self: center;
+    text-align: center;
+}

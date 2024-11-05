@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header_logo {
+    width: 8.63rem;
+    height: 7.75rem;
+    padding-top: 0.5rem;
+}
+
+.header_horaires {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.header_text {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.horaires_list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.horaire_item {
+    text-align: center;
+}
+
+.header_nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 1.5rem;
+}
+
+.header_nav a {
+    margin-left: 1.5rem;
+}
+
+.header_nav a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.188rem;
+    text-underline-offset: 0.25rem;
+}

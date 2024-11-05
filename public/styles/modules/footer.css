@@ -1,0 +1,25 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+}
+
+.text_footer {
+    margin-left: 2.56rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50rem;
+    margin-top: 0.5rem;
+}
+
+.footer_nav a {
+    margin-left: 1.5em;
+    padding: 0.5rem;
+}

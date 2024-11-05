@@ -1,0 +1,27 @@
+<header class="header">
+        <a href="{{ path('app_accueil') }}">
+            <img class="header_logo" src="{{ asset('images/logo_zoo.svg') }}" alt="Logo Zoo d'Arcadia">
+        </a>
+       <div class="header_horaires">
+            <p class="header_text">Nos horaires :</p>
+            <ul class="horaires_list">
+                {% for horaire in horaires %}
+                    <li class="horaire_item">Du {{ horaire.jour }} de {{ horaire.heure }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <nav class="header_nav">
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_admin') }}">Admin</a>
+            {% endif %}
+            <a href="{{ path('app_accueil') }}">Accueil</a>
+            <a href="{{ path('app_services') }}">Services</a>
+            <a href="{{ path('app_habitats') }}">Habitats</a>
+            <a href="{{ path('app_contact') }}">Contact</a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('app_deconnexion') }}">Déconnexion</a>
+            {% else %}
+            <a href="{{ path('app_connexion') }}">Connexion</a>
+            {% endif %}
+        </nav>
+</header>

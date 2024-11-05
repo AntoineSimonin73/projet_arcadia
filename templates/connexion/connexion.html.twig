@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo d'Arcadia</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/logo_zoo.svg') }}">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&family=Happy+Monkey:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    {% include 'blocCode/header.html.twig' %}
+
+    <main>
+        <section class="connexion">
+            <h2>Connexion</h2>
+            <form class="formulaire_connexion" id="form_connexion" method="post" >
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputPassword">Password</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        Vous êtes connecté en tant que : {{ app.user.userIdentifier }}, <a href="{{ path('app_deconnexion') }}">Se déconnecter</a>
+                    </div>
+                {% endif %}
+                
+                <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button type="submit">Se connecter</button>
+            </form>
+        </section>
+    </main>
+
+    {% include 'blocCode/footer.html.twig' %}
+
+</body>
+</html>

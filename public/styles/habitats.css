@@ -1,0 +1,107 @@
+.habitats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2.5rem 1rem 2.5rem 1rem;
+    text-align: center;
+    gap: 0.6rem;
+}
+
+.habitats img:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+.titre_habitats {
+    color: black;
+    padding-top: 2rem;
+}
+
+.animaux {
+    background: url('../images/fond_la_savane.jpg') no-repeat center center/cover;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 1.22rem;
+}
+
+.animaux p {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 54.62rem;
+    text-align: center;
+    margin: auto;
+    line-height: 1.7rem;
+}
+
+.animaux a {
+    color: white;
+    text-decoration: none;
+}
+
+.animaux a:hover {
+    transform: scale(1);
+    transition: transform 0.5s;
+}
+
+.grid_animaux {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+    justify-items: center;
+}
+
+.grid_animaux p {
+    display: flex;
+    width: 36.31rem; 
+    justify-content: center;
+}
+
+.img_animaux {
+    border-radius: 1.25rem;
+    object-fit: cover;
+    width: 90%;
+    height: 70%;
+    object-fit: cover;
+
+}
+
+.img_animaux:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.animaux h3 {
+    font-size: 2.5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* style pour les animaux en détails */
+
+.animaux_details {
+    background: rgb(200, 200, 200);
+}
+
+.titre_animaux_details {
+    color: black;
+    padding-top: 2rem;
+}
+
+.grid_animaux_details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 4rem 2rem 4rem 2rem;
+    font-size: 2rem;
+    align-items: center;
+}
+
+.grid_animaux_details img {
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
+}

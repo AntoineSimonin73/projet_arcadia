@@ -1,0 +1,60 @@
+.nos_services {
+    background: url('../images/crocodile_fond_services.jpg') no-repeat center center/cover;
+    position: relative;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.nos_services h2 {
+    font-size: 3.25rem;
+    text-decoration: underline;
+    padding: 2rem;
+}
+
+.liens_services {
+    text-decoration: none;
+    color: white;
+    z-index: 2;
+    position: relative;
+    display: inline-block;
+}
+
+/* Pour avoir l'image du crocodile en fond */
+.nos_services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.grid_services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10rem;
+    padding: 3rem;
+    text-align: center;
+    align-items: center;
+    color: white;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-left: 2.3rem;
+    margin-right: 2.3rem;
+    }
+    
+.grid_services p {
+    white-space: pre-wrap; /* Préserve les espaces et les sauts de ligne */
+    word-wrap: break-word; /* Permet le retour à la ligne automatique */
+}
+
+/* Styles spécifiques pour la deuxième description et son image */
+.grid_services .second-description {
+    order: 2; /* Place la deuxième description après l'image */
+}
+
+.grid_services .second-image {
+    order: 1; /* Place l'image avant la deuxième description */
+}
+
