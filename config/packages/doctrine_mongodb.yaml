@@ -1,0 +1,9 @@
+doctrine_mongodb:
+    connections:
+        default:
+            server: '%env(MONGODB_URL)%'
+            options: {}
+    default_database: 'consultation_animaux'
+    document_managers:
+        default:
+            auto_mapping: true
