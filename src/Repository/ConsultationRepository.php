@@ -20,13 +20,22 @@ class ConsultationRepository
         if (!$consultation) {
             $consultation = new ConsultationAnimaux();
             $consultation->setAnimalId($animalId);
-            $consultation->setViews(1);
-            $this->dm->persist($consultation);
-        } else {
-            $consultation->setViews($consultation->getViews() + 1);
         }
 
+        $consultation->incrementViews();
+        $this->dm->persist($consultation);
         $this->dm->flush();
+
+        return $consultation->getViews();
+    }
+
+    public function getViewsByAnimal(string $animalId): int
+    {
+        $consultation = $this->dm->getRepository(ConsultationAnimaux::class)->findOneBy(['animalId' => $animalId]);
+
+        if (!$consultation) {
+            return 0;
+        }
 
         return $consultation->getViews();
     }

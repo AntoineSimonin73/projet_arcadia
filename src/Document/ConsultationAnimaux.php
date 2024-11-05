@@ -12,8 +12,11 @@ class ConsultationAnimaux
     #[MongoDB\Field(type: "string")]
     private $animalId;
 
+    #[MongoDB\Field(type: "date")]
+    private $consultedAt;
+
     #[MongoDB\Field(type: "int")]
-    private $views;
+    private $views = 0;
 
     public function getId()
     {
@@ -25,22 +28,31 @@ class ConsultationAnimaux
         return $this->animalId;
     }
 
-    public function setAnimalId($animalId)
+    public function setAnimalId(string $animalId): self
     {
         $this->animalId = $animalId;
+
+        return $this;
     }
 
-    public function getViews()
+    public function getConsultedAt(): ?\DateTime
+    {
+        return $this->consultedAt;
+    }
+
+    public function setConsultedAt(\DateTime $consultedAt): self
+    {
+        $this->consultedAt = $consultedAt;
+
+        return $this;
+    }
+
+    public function getViews(): int
     {
         return $this->views;
     }
 
-    public function setViews($views)
-    {
-        $this->views = $views;
-    }
-
-    public function incrementViews()
+    public function incrementViews(): void
     {
         $this->views++;
     }
