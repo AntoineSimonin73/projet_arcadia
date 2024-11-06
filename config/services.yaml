@@ -22,3 +22,8 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Document/ConsultationAnimaux.php' # Exclure cette classe de l'autowiring
+
+    App\Repository\ConsultationRepository:
+        arguments:
+            $dm: '@doctrine_mongodb.odm.document_manager'
