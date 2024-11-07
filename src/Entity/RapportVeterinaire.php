@@ -32,7 +32,7 @@ class RapportVeterinaire
     private ?string $etat = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nourriture = null;
+    private ?string $nourriture_proposee = null;
 
     #[ORM\Column]
     private ?int $grammage = null;
@@ -102,14 +102,14 @@ class RapportVeterinaire
         return $this;
     }
 
-    public function getNourriture(): ?string
+    public function getNourritureProposee(): ?string
     {
-        return $this->nourriture;
+        return $this->nourriture_proposee;
     }
 
-    public function setNourriture(string $nourriture): static
+    public function setNourritureProposee(string $nourriture_proposee): static
     {
-        $this->nourriture = $nourriture;
+        $this->nourriture_proposee = $nourriture_proposee;
 
         return $this;
     }
@@ -124,5 +124,10 @@ class RapportVeterinaire
         $this->grammage = $grammage;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nourriture_proposee ?? '';
     }
 }

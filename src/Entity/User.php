@@ -84,13 +84,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // Assurez-vous que chaque utilisateur a toujours au moins ROLE_USER
-        if (!in_array('ROLE_USER', $roles)) {
-            $roles[] = 'ROLE_USER';
-        }
-
-        return $roles;
+        return $this->roles;
     }
 
     /**
@@ -98,13 +92,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function setRoles(array $roles): self
     {
-    // Assurez-vous que le tableau contient au moins 'ROLE_USER'
-    if (!in_array('ROLE_USER', $roles)) {
-        $roles[] = 'ROLE_USER';
+        // Assurez-vous que le tableau contient un seul rôle
+        if (count($roles) > 1) {
+            throw new \InvalidArgumentException('Un utilisateur ne peut avoir qu\'un seul rôle.');
+        }
+        $this->roles = $roles;
+
+        return $this;
     }
-    $this->roles = array_unique(array_merge($roles, ['ROLE_USER'])); // Par exemple
-    
-    return $this;
+
+    public function getRolesAsString(): string
+    {
+        return implode(', ', $this->roles);
     }
 
     /**

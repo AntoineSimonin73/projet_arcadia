@@ -8,8 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\{Action, Actions, Crud, KeyValueStore
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
-use EasyCorp\Bundle\EasyAdminBundle\Field\{ChoiceField, IdField, EmailField, TextField};
-use Symfony\Component\Form\Extension\Core\Type\{ChoiceType, PasswordType, RepeatedType};
+use EasyCorp\Bundle\EasyAdminBundle\Field\{ChoiceField, EmailField, TextField};
+use Symfony\Component\Form\Extension\Core\Type\{PasswordType, RepeatedType};
 use Symfony\Component\Form\{FormBuilderInterface, FormError, FormEvent, FormEvents};
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -59,7 +59,6 @@ class UserCrudController extends AbstractCrudController
     {
 
     $fields = [
-        IdField::new('id')->hideOnForm(),
         TextField::new('nom'),
         TextField::new('prenom'),
         EmailField::new('email'),
@@ -69,11 +68,11 @@ class UserCrudController extends AbstractCrudController
                 'Vétérinaire' => 'ROLE_VETERINAIRE', 
                 'Administrateur' => 'ROLE_ADMIN'
             ])
-            ->renderExpanded()
+            ->renderAsNativeWidget()
             ->setRequired(true)
-            ->allowMultipleChoices(true)
-            ->setFormTypeOption('empty_data', 'ROLE_USER'),
-    ];
+            ->setFormTypeOption('multiple', true) // N'autoriser qu'un seul rôle
+            ->setFormTypeOption('empty_data', 'ROLE_EMPLOYE'), // Par défaut, définir sur ROLE_EMPLOYE
+        ];
         
     $password = TextField::new('password')
         ->setFormType(RepeatedType::class)

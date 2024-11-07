@@ -11,8 +11,8 @@
             </ul>
         </div>
         <nav class="header_nav">
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('app_admin') }}">Admin</a>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYE') or is_granted('ROLE_VETERINAIRE') %}
+                <a href="{{ path('app_admin') }}">Admin</a>
             {% endif %}
             <a href="{{ path('app_accueil') }}">Accueil</a>
             <a href="{{ path('app_services') }}">Services</a>
