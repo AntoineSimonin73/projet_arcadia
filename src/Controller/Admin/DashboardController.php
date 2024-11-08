@@ -65,6 +65,7 @@ class DashboardController extends AbstractDashboardController
 
         } elseif ($this->security->isGranted('ROLE_VETERINAIRE')) {
             yield MenuItem::linkToCrud('Habitats', 'fa-solid fa-igloo', Habitat::class);
+            yield MenuItem::linkToCrud('Nourrissages', 'fas fa-list', Nourrissage::class);
             yield MenuItem::linkToCrud('Rapports vétérinaire', 'fa-solid fa-notes-medical', RapportVeterinaire::class);
         } else {
             yield MenuItem::linkToCrud('Animaux', 'fa-solid fa-hippo', Animal::class);

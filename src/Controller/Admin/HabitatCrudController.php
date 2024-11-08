@@ -5,26 +5,18 @@ use App\Entity\Habitat;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeCrudActionEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\SecurityBundle\Security as SecurityBundleSecurity;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\RouterInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class HabitatCrudController extends AbstractCrudController implements EventSubscriberInterface
+class HabitatCrudController extends AbstractCrudController
 {
     private $security;
-    private $requestStack;
-    private $router;
 
-    public function __construct(SecurityBundleSecurity $security, RequestStack $requestStack, RouterInterface $router)
+    public function __construct(SecurityBundleSecurity $security)
     {
         $this->security = $security;
-        $this->requestStack = $requestStack;
-        $this->router = $router;
 
     }
 
@@ -33,27 +25,12 @@ class HabitatCrudController extends AbstractCrudController implements EventSubsc
         return Habitat::class;
     }
 
-    public static function getSubscribedEvents()
-    {
-        return [
-            BeforeCrudActionEvent::class => 'onBeforeCrudAction',
-        ];
-    }
-
-    public function onBeforeCrudAction(BeforeCrudActionEvent $event): void
-    {
-        $request = $this->requestStack->getCurrentRequest();
-        $action = $request->query->get('crudAction');
-        if ($this->security->isGranted('ROLE_VETERINAIRE') && !in_array($action, ['index', 'detail', 'edit', 'new'])) {
-            throw $this->createAccessDeniedException('Vous n\'avez pas les permissions nécessaires pour effectuer cette action.');
-        }
-    }
-
     public function configureActions(Actions $actions): Actions
     {
         if ($this->security->isGranted('ROLE_VETERINAIRE')) {
             // Désactiver l'action "new" pour les vétérinaires
             $actions->disable(Action::NEW);
+            $actions->disable(Action::DELETE);
         }
 
         return $actions;

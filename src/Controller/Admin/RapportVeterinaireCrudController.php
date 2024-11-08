@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Controller\Admin;
 
 use App\Entity\RapportVeterinaire;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -12,7 +12,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
@@ -55,16 +54,32 @@ class RapportVeterinaireCrudController extends AbstractCrudController implements
     
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $fields = [
             TextField::new('etat', 'Etat de santé'),
             TextField::new('nourriture_proposee', 'Nourriture proposée'),
             NumberField::new('grammage', 'Grammage nourriture'),
             DateField::new('date', 'Date'),
-            TextareaField::new('details', 'Détails')
-                ->setRequired(false),
-            AssociationField::new('animal', 'Animal'),
+            TextareaField::new('details', 'Détails')->setRequired(false),
         ];
+        
+        $animalField = AssociationField::new('animal', 'Animal')->hideOnIndex();
+
+        if ($this->security->isGranted('ROLE_VETERINAIRE')) {
+            if ($pageName === 'index') {
+                // Supprime le lien pour la vue index sans désactiver le champ
+                $animalField = TextField::new('animal.nom', 'Animal');
+            } elseif ($pageName === 'edit') {
+                // Désactive le champ pour la page edit
+                $animalField->setFormTypeOption('disabled', false);
+            }
+        }
+
+        $fields[] = $animalField;
+
+        return $fields;
     }
+
+
     public function configureFilters(Filters $filters): Filters
     {
         return $filters

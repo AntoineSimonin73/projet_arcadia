@@ -2,29 +2,23 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Nourrissage;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeCrudActionEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\RouterInterface;
 
-class NourrissageCrudController extends AbstractCrudController implements EventSubscriberInterface
+class NourrissageCrudController extends AbstractCrudController
 {
     private $security;
-    private $requestStack;
-    private $router;
 
-    public function __construct(Security $security, RequestStack $requestStack, RouterInterface $router)
+    public function __construct(Security $security)
     {
         $this->security = $security;
-        $this->requestStack = $requestStack;
-        $this->router = $router;
     }
 
     public static function getEntityFqcn(): string
@@ -32,20 +26,16 @@ class NourrissageCrudController extends AbstractCrudController implements EventS
         return Nourrissage::class;
     }
 
-    public static function getSubscribedEvents()
+    public function configureActions(Actions $actions): Actions
     {
-        return [
-            BeforeCrudActionEvent::class => 'onBeforeCrudAction',
-        ];
-    }
-
-    public function onBeforeCrudAction(BeforeCrudActionEvent $event): void
-    {
-        $request = $this->requestStack->getCurrentRequest();
-        $action = $request->query->get('crudAction');
-        if ($this->security->isGranted('ROLE_VETERINAIRE') && !in_array($action, ['index', 'detail', 'edit', 'new'])) {
-            throw $this->createAccessDeniedException('Vous n\'avez pas les permissions nécessaires pour effectuer cette action.');
+        if ($this->security->isGranted('ROLE_VETERINAIRE')) {
+            // Désactiver les actions non voulues pour les vétérinaires
+            $actions->disable(Action::NEW);
+            $actions->disable(Action::EDIT);
+            $actions->disable(Action::DELETE);
         }
+
+        return $actions;
     }
 
     public function configureFields(string $pageName): iterable
